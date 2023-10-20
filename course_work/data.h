@@ -1,6 +1,6 @@
 #ifndef DATA_H
 #define DATA_H
-#include "MyLib.h"
+#include "My_Lib.h"
 #include <string>
 #include <stdlib.h>
 
@@ -9,7 +9,7 @@ class data
 private:
 
 public:
-    MyLib::Vector *vector;
+    My_Lib::MyVector *vector;
     data();
     //private
     std::string *transport = new std::string [4]{"Bus", "Ship", "Plane", "Train"};  //Transport types
