@@ -7,10 +7,10 @@ namespace My_Lib {
 
 class MyVector {
 public:
-    void push_back_double_int(int*&, int&);
-    void push_back_double_unsignedShort(unsigned short*&, unsigned short&);
-    void fillArr(int* const, int const, int const);
-    void fillArr(unsigned short* const, unsigned short const, unsigned short const);
+    void push_back_double_int(int*&, int&);   //increace size of int array
+    void push_back_double_unsignedShort(unsigned short*&, unsigned short&);  //increace size of unsigned short array
+    void fillArr(int* const, int const, int const);  //fill int array
+    void fillArr(unsigned short* const, unsigned short const, unsigned short const); //fill unsigned short array
 
 
 };
