@@ -4,8 +4,6 @@ data::data()
 {
 }
 
-void data::qwe(){
-}
 
 
 //method to change hr and min into hr.min type
@@ -31,10 +29,33 @@ double data::decTOsix(double hr, double min){
 }
 
 
-void data::setHr(unsigned short k, unsigned short m){
-    unsigned short ArrSize = (sizeof(this->hr)/sizeof(unsigned short));
-    if(k >= ArrSize){
-        vector->push_back_double_unsignedShort(hr, ArrSize);
+void data::setHr(unsigned short position, unsigned short value){
+    if(position >= this->sizeHr){
+        vector->push_back_double(hr, this->sizeHr);
     }
-    vector->fillArr(hr, k, m);
+    vector->fillArr(hr, position, value);
 }
+
+void data::setMin(unsigned short position, unsigned short value){
+    if(position >= this->sizeMin){
+        vector->push_back_double(min, this->sizeMin);
+    }
+    vector->fillArr(min, position, value);
+}
+
+void data::setPeriod(unsigned short position, unsigned short value){
+    if(position >= this->sizePeriod){
+        vector->push_back_double(period, this->sizePeriod);
+    }
+    vector->fillArr(period, position, value);
+}
+
+void data::setName(unsigned short position, std::string* variable){
+    if(position >= this->sizeName){
+        vector->push_back_double(name, this->sizeName);
+
+    }
+    vector->fillArr(name, position, variable);
+
+}
+

@@ -17,11 +17,6 @@ Add_info::~Add_info()
 
 void Add_info::on_pushButton_clicked()
 {
-    QString value1=ui->TransportName->text();
-    int value2 = ui->Period->text().toInt();
 
-    this->MyData.k1 = value2;
-    ui->label->setNum(this->MyData.k1);
-    //hide();
 }
 

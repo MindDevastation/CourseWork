@@ -39,20 +39,17 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     //Testing fields:
-    QString n = QString::fromStdString(this->MyData.transport[1]);
-    int k;
-    ui->label->setNum(this->train.train.decTOsix(this->train.train.hr[3], this->train.train.min[3]));
-    ui->label_2->setNum(this->bus.bus.decTOsix(this->bus.bus.hr[3], this->bus.bus.min[3]));
+//    int k;
+//    ui->label->setNum(this->train.train.decTOsix(this->train.train.getHr(3), this->train.train.min[3]));
+//    ui->label_2->setNum(this->bus.bus.decTOsix(this->bus.bus.hr[3], this->bus.bus.min[3]));
 //    int value = ui->lineEdit->text().toInt();
 //    if (value + 5 == 5){
 //        ui->label_3->setText("Error");
 //    }else {
 //        ui->label_3->setNum(value+5);
 //    }
-    int value = ui->HrEdit->text().toInt();
-    this->bus.bus.setHr(1, value);  //set value to hr[1]
-    ui->label_3->setNum(this->bus.bus.getHr(1));  //write value of hr[1] to label_3
 
+    ui->label->setNum(this->bus.bus.getPeriod(4));
     //Working part
     int current_TransportNum_index = ui->TransportNum->currentIndex();  //get index of Transport name
     int current_comboBox_index = ui->Transport->currentIndex();         //get index of Transport type
@@ -71,7 +68,7 @@ void MainWindow::on_pushButton_clicked()
     case 1:
         for(int i = 0; i<ui->tableWidget_2->rowCount();i++){
             for(int j = 0; j<ui->tableWidget_2->columnCount();j++){
-                QTableWidgetItem *tab = new QTableWidgetItem (QString::number(bus.bus.decTOsix(this->bus.bus.hr[current_TransportNum_index], this->bus.bus.min[current_TransportNum_index] + (this->bus.bus.period[current_TransportNum_index] * s))));
+                QTableWidgetItem *tab = new QTableWidgetItem (QString::number(bus.bus.decTOsix(this->bus.bus.getHr(current_TransportNum_index), this->bus.bus.getMin(current_TransportNum_index) + (this->bus.bus.getPeriod(current_TransportNum_index)* s))));
                 ui->tableWidget_2->setItem(i, j, tab);
                 s++;
             }
@@ -80,7 +77,7 @@ void MainWindow::on_pushButton_clicked()
     case 2:
         for(int i = 0; i<ui->tableWidget_2->rowCount();i++){
             for(int j = 0; j<ui->tableWidget_2->columnCount();j++){
-                QTableWidgetItem *tab = new QTableWidgetItem (QString::number(ship.ship.decTOsix(this->train.train.hr[current_TransportNum_index], this->ship.ship.min[current_TransportNum_index] + (this->ship.ship.period[current_TransportNum_index] * s))));
+                QTableWidgetItem *tab = new QTableWidgetItem (QString::number(ship.ship.decTOsix(this->train.train.getHr(current_TransportNum_index), this->ship.ship.getMin(current_TransportNum_index) + (this->ship.ship.getPeriod(current_TransportNum_index) * s))));
                 ui->tableWidget_2->setItem(i, j, tab);
                 s++;
             }
@@ -89,7 +86,7 @@ void MainWindow::on_pushButton_clicked()
     case 3:
         for(int i = 0; i<ui->tableWidget_2->rowCount();i++){
             for(int j = 0; j<ui->tableWidget_2->columnCount();j++){
-                QTableWidgetItem *tab = new QTableWidgetItem (QString::number(plane.plane.decTOsix(this->plane.plane.hr[current_TransportNum_index], this->plane.plane.min[current_TransportNum_index] + (this->plane.plane.period[current_TransportNum_index] * s))));
+                QTableWidgetItem *tab = new QTableWidgetItem (QString::number(plane.plane.decTOsix(this->plane.plane.getHr(current_TransportNum_index), this->plane.plane.getMin(current_TransportNum_index) + (this->plane.plane.getPeriod(current_TransportNum_index) * s))));
                 ui->tableWidget_2->setItem(i, j, tab);
                 s++;
             }
@@ -98,7 +95,7 @@ void MainWindow::on_pushButton_clicked()
     case 4:
         for(int i = 0; i<ui->tableWidget_2->rowCount();i++){
             for(int j = 0; j<ui->tableWidget_2->columnCount();j++){
-                QTableWidgetItem *tab = new QTableWidgetItem (QString::number(train.train.decTOsix(this->train.train.hr[current_TransportNum_index], this->train.train.min[current_TransportNum_index] + (this->train.train.period[current_TransportNum_index] * s))));
+                QTableWidgetItem *tab = new QTableWidgetItem (QString::number(train.train.decTOsix(this->train.train.getHr(current_TransportNum_index), this->train.train.getMin(current_TransportNum_index) + (this->train.train.getPeriod(current_TransportNum_index) * s))));
                 ui->tableWidget_2->setItem(i, j, tab);
                 s++;
             }
@@ -123,7 +120,7 @@ void MainWindow::on_Transport_activated(int index)
                 ui->TransportNum->removeItem(i);
             }
             for (int i = 0; i<4 ; i++){
-                call = QString::fromStdString(this->bus.bus.name[i]);
+                call = QString::fromStdString(this->bus.bus.getName(i));
                 ui->TransportNum->addItem(call);
             }
             break;
@@ -132,7 +129,7 @@ void MainWindow::on_Transport_activated(int index)
                 ui->TransportNum->removeItem(i);
             }
             for (int i = 0; i<4 ; i++){
-                call = QString::fromStdString(this->ship.ship.name[i]);
+                call = QString::fromStdString(this->ship.ship.getName(i));
                 ui->TransportNum->addItem(call);
             }
             break;
@@ -141,7 +138,7 @@ void MainWindow::on_Transport_activated(int index)
                 ui->TransportNum->removeItem(i);
             }
             for (int i = 0; i<4 ; i++){
-                call = QString::fromStdString(this->plane.plane.name[i]);
+                call = QString::fromStdString(this->plane.plane.getName(i));
                 ui->TransportNum->addItem(call);
             }
             break;
@@ -150,7 +147,7 @@ void MainWindow::on_Transport_activated(int index)
                 ui->TransportNum->removeItem(i);
             }
             for (int i = 0; i < 4 ; i++){
-                call = QString::fromStdString(this->train.train.name[i]);
+                call = QString::fromStdString(this->train.train.getName(i));
                 ui->TransportNum->addItem(call);
             }
         default:
@@ -165,8 +162,9 @@ void MainWindow::on_Transport_activated(int index)
 //test
 void MainWindow::on_Add_clicked()
 {
-    Add_info add;
-    add.setModal(true);
-    add.exec();
+    int value = ui->HrEdit->text().toInt();
+    //std::string value2 = ui ->TransportNameEdit->text().toc;
+    this->bus.bus.setHr(7, value);  //set value to hr[1]
+    ui->label_3->setNum(this->bus.bus.getHr(7));  //write value of hr[1] to label_3
 }
 

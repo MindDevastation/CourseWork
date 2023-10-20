@@ -33,6 +33,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         plane.h plane.cpp
         add_info.h add_info.cpp add_info.ui
         My_Lib.h
+        My_Lib.cpp
 
     )
 # Define target properties for Android with Qt 6 as:
