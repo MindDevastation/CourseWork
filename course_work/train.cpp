@@ -9,11 +9,11 @@ Train::Train()
             this ->train.setHr(i, this->train.getHr(i) - 24);
             k++;
         }while(this->train.getHr(i) >= 24);
-        this->train.setMin(i, i + 1);
+        this->train.setMin(i, i + 5);
         this->train.setPeriod(i, 15);
     }
-//    this->train.setName(0, "New York - Dublin", this->train.size);
-//    this->train.setName(1, "Kiev - Lviv", this->train.size);
-//    this->train.setName(2, "Paris - Kioto", this->train.size);
-//    this->train.setName(3, "Praga - Madrid", this->train.size);
+    this->train.name[0] = "New York - Dublin";
+    this->train.name[1] = "Kiev - Lviv";
+    this->train.name[2] = "Paris - Kioto";
+    this->train.name[3] = "Praga - Madrid";
 }

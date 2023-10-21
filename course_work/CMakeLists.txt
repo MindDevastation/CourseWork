@@ -31,10 +31,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         train.h train.cpp
         ship.h ship.cpp
         plane.h plane.cpp
-        add_info.h add_info.cpp add_info.ui
         My_Lib.h
         My_Lib.cpp
-
+        myImgRes.qrc
+        ragistration.h ragistration.cpp ragistration.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET course_work APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

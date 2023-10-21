@@ -7,6 +7,7 @@ class Ship
 {
 public:
     Ship();
+    ~Ship(){}
     data ship;
 };
 

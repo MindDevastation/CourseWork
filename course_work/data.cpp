@@ -19,11 +19,7 @@ double data::decTOsix(double hr, double min){
             count++;
             temp -= 60;
         } while (temp>=60);
-        //count = static_cast <int> (min) % 60;
         time = static_cast<double>(hr + 1*count)+static_cast<double> (min-60*count) * 0.01;
-        if (time >= 24){
-            time = time - 24;
-        }
     }
     return time;
 }
@@ -59,3 +55,27 @@ void data::setName(unsigned short position, std::string* variable){
 
 }
 
+void data::delHr(unsigned short position){
+    vector->pop_back(hr, this->sizeHr, position);
+}
+
+void data::delMin(unsigned short position){
+    vector->pop_back(min, this->sizeMin, position);
+}
+
+void data::delPeriod(unsigned short position){
+    vector->pop_back(period, this->sizePeriod, position);
+}
+
+void data::delName(unsigned short position){
+    vector->pop_back(name, this->sizeName, position);
+}
+
+data::~data(){
+    delete[] transport;
+    delete[] hr;
+    delete[] min;
+    delete[] period;
+    delete[] name;
+    delete[] tempName;
+}

@@ -7,6 +7,7 @@ class Plane
 {
 public:
     Plane();
+    ~Plane(){}
     data plane;
 };
 

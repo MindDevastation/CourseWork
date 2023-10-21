@@ -1,7 +1,7 @@
 #include "My_Lib.h"
 
 
-void My_Lib::MyVector::push_back_double(unsigned short*& arr, unsigned short& size) {
+void My_Lib::MyVector::push_back_double(unsigned short*& arr, unsigned short &size) {
     unsigned short* newArr = new unsigned short[size * 2];
 
     for (int i = 0; i < size; i++) {
@@ -10,7 +10,7 @@ void My_Lib::MyVector::push_back_double(unsigned short*& arr, unsigned short& si
 
     size *= 2;
 
-    delete arr;
+    delete[] arr;
 
     arr = newArr;
 }
@@ -24,7 +24,7 @@ void My_Lib::MyVector::push_back_double(std::string *&arr, unsigned short& size)
 
     size = size * 2;
 
-    delete arr;
+    delete[] arr;
 
     arr = newArr;
 }
@@ -52,7 +52,7 @@ void My_Lib::MyVector::push_back_double(wchar_t*& arr, unsigned short& size) {
 
     size *= 2;
 
-    delete arr;
+    delete[] arr;
 
     arr = newArr;
 }
@@ -69,3 +69,36 @@ void My_Lib::MyVector::fillArr(unsigned short *&arr, unsigned short pointInArr, 
     *(arr+pointInArr) = value;
 }
 
+void My_Lib::MyVector::pop_back(unsigned short *&arr, unsigned short &size, int point){
+    unsigned short* newArr = new unsigned short[size - 1];
+    int k = 0;
+    for(int i = 0; i < size; i++){
+        if (i != point){
+            *(newArr+k) = *(arr+i);
+            k++;
+        }
+    }
+
+    size -= 1;
+
+    delete[] arr;
+
+    arr = newArr;
+}
+
+void My_Lib::MyVector::pop_back(std::string*& arr, unsigned short &size, int point){
+    std::string* newArr = new std::string[size - 1];
+    int k = 0;
+    for(int i = 0; i < size; i++){
+        if (i != point){
+            *(newArr+k) = *(arr+i);
+            k++;
+        }
+    }
+
+    size -= 1;
+
+    delete[] arr;
+
+    arr = newArr;
+}

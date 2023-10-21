@@ -6,6 +6,7 @@ class Train
 {
 public:
     Train();
+    ~Train(){}
     data train;
 };
 
